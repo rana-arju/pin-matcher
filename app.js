@@ -14,3 +14,32 @@ function generatePin(){
 }
 generatePin();
 });
+document.getElementById("key-pad").addEventListener("click", function(event){
+    const targetKey =  event.target.innerText;
+    const cals = document.getElementById("typed-numbers");
+    if (isNaN(targetKey)) {
+       if (targetKey == "C") {
+           cals.value = " ";
+       }
+   }else{
+    const prevCals = cals.value;
+    const newCals = prevCals + targetKey;
+    cals.value = newCals;
+   }
+
+});
+function verifyPin() {
+    const generatePin = document.getElementById("display-pin").value;
+    const typedNumbers = document.getElementById("typed-numbers").value;
+    const successMatch = document.getElementById("pin-success");
+    const errorMsg = document.getElementById("pin-field");
+    if (generatePin == typedNumbers) {
+        successMatch.style.display = "block";
+        errorMsg.style.display = "none";
+
+    }else{
+        errorMsg.style.display = "block";
+        successMatch.style.display = "none";
+
+    }
+}
